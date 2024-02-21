@@ -1,0 +1,233 @@
+cuando inicias como cliente y borras tu cuenta te sale otra vez el menú de clientecase 1:
+                    // Lógica para acceder como administrador
+                    System.out.print("\u001B[33mIntroduzca la contraseña de administrador: \u001B[0m");
+                    String contrasenaAdmin = scanner.next();
+
+                    if (contrasenaAdmin.equals("contraseña")) {
+                        accesoAdministrador = true;
+                        int opcionAdmin;
+                        do {
+                            System.out.println(" ");
+                            System.out.println("\u001B[35m==================\u001B[0m");
+                            System.out.println("\u001B[35mMenú Administrador\u001B[0m");
+                            System.out.println("\u001B[35m==================\u001B[0m");
+                            System.out.println("1. Ver cantidad de clientes");
+                            System.out.println("2. Ver información de un cliente");
+                            System.out.println("3. Ver cantidad de libros");
+                            System.out.println("4. Ver información de un libro");
+                            System.out.println("5. Añadir libro");
+                            System.out.println("6. Modificar libro");
+                            System.out.println("7. Borrar libro");
+                            System.out.println("8. Informacion General");
+                            System.out.println("9. Volver al menú principal");
+                            System.out.print("\u001B[33mIngrese su opción: \u001B[0m");
+                            opcionAdmin = scanner.nextInt();
+
+                            switch (opcionAdmin) {
+                                case 1:
+                                    System.out.println(" ");
+                                    System.out.println("\u001B[34mCantidad de clientes: \u001B[0m" + contadorClientes);
+
+                                    break;
+                                case 2:
+                                    if (contadorClientes > 0) {
+                                        System.out.println(" ");
+                                        System.out.print("\u001B[33mIngrese el número del cliente que desea ver: \u001B[0m");
+                                        int numeroCliente = scanner.nextInt();
+                                        if (numeroCliente >= 1 && numeroCliente <= contadorClientes) {
+                                            System.out.println(" ");
+                                            System.out.println("\u001B[34mInformación del Cliente " + numeroCliente + ":\u001B[0m");
+                                            System.out.println("\u001B[34mNombre: \u001B[0m" + clientes[numeroCliente - 1][0]);
+                                            System.out.println("\u001B[34mApellido: \u001B[0m" + clientes[numeroCliente - 1][1]);
+                                            System.out.println("\u001B[34mEdad: \u001B[0m" + clientes[numeroCliente - 1][2]);
+                                        } else {
+                                            System.out.println(" ");
+                                            System.out.println("Número de cliente no válido.");
+                                        }
+                                    } else {
+                                        System.out.println(" ");
+                                        System.out.println("No hay clientes registrados.");
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.println(" ");
+                                    System.out.println("\u001B[34mCantidad de libros: " + contadorLibros);
+                                    break;
+                                case 4:
+                                    if (contadorLibros > 0) {
+                                        System.out.println(" ");
+                                        System.out.print("\u001B[33mIngrese el número del libro que desea ver: \u001B[0m");
+                                        int numeroLibro = scanner.nextInt();
+                                        if (numeroLibro >= 1 && numeroLibro <= contadorLibros) {
+                                            System.out.println(" ");
+                                            System.out.println("\u001B[34mInformación del Libro " + numeroLibro + ":\u001B[0m");
+                                            System.out.println("\u001B[34mTítulo: \u001B[0m" + libros[numeroLibro - 1][0]);
+                                            System.out.println("\u001B[34mNúmero de Páginas: \u001B[0m" + libros[numeroLibro - 1][1]);
+                                            System.out.println("\u001B[34mAutor: \u001B[0m" + libros[numeroLibro - 1][2]);
+                                        } else {
+                                            System.out.println(" ");
+                                            System.out.println("Número de libro no válido.");
+                                        }
+                                    } else {
+                                        System.out.println(" ");
+                                        System.out.println("No hay libros registrados.");
+                                    }
+                                    break;
+                                case 5:
+                                    // Añadir libro
+                                    System.out.println(" ");
+                                    System.out.print("\u001B[33mIngrese el título del libro: \u001B[0m");
+                                    libros[contadorLibros][0] = scanner.next();
+                                    System.out.print("\u001B[33m el número de páginas del libro: \u001B[0m");
+                                    libros[contadorLibros][1] = scanner.next();
+                                    System.out.print("\u001B[33mIngrese el autor del libro: \u001B[0m");
+                                    libros[contadorLibros][2] = scanner.next();
+                                    contadorLibros++;
+                                    System.out.println(" ");
+                                    System.out.println("Libro añadido correctamente.");
+                                    break;
+                                case 6:
+                                    // Modificar libro
+                                    if (contadorLibros > 0) {
+                                        System.out.println(" ");
+                                        System.out.print("\u001B[33mIngrese el número del libro que desea modificar: \u001B[0m");
+                                        int numeroLibroModificar = scanner.nextInt();
+                                        if (numeroLibroModificar >= 1 && numeroLibroModificar <= contadorLibros) {
+                                            System.out.println(" ");
+                                            System.out.print("\u001B[33mIngrese el nuevo título del libro: \u001B[0m");
+                                            libros[numeroLibroModificar - 1][0] = scanner.next();
+                                            System.out.print("\u001B[33mIngrese el nuevo número de páginas del libro: \u001B[0m");
+                                            libros[numeroLibroModificar - 1][1] = scanner.next();
+                                            System.out.print("\u001B[33mIngrese el nuevo autor del libro: \u001B[0m");
+                                            libros[numeroLibroModificar - 1][2] = scanner.next();
+                                            System.out.println("Libro modificado correctamente.");
+                                        } else {
+                                            System.out.println(" ");
+                                            System.out.println("Número de libro no válido.");
+                                        }
+                                    } else {
+                                        System.out.println(" ");
+                                        System.out.println("No hay libros registrados.");
+                                    }
+                                    break;
+                                case 7:
+                                    // Borrar libro
+                                    if (contadorLibros > 0) {
+                                        System.out.println(" ");
+                                        System.out.print("\u001B[33mIngrese el número del libro que desea borrar: \u001B[0m");
+                                        int numeroLibroBorrar = scanner.nextInt();
+                                        if (numeroLibroBorrar >= 1 && numeroLibroBorrar <= contadorLibros) {
+                                            // Mover todos los libros a partir de la posición del libro a borrar
+                                            for (int i = numeroLibroBorrar - 1; i < contadorLibros - 1; i++) {
+                                                libros[i][0] = libros[i + 1][0];
+                                                libros[i][1] = libros[i + 1][1];
+                                                libros[i][2] = libros[i + 1][2];
+                                            }
+                                            contadorLibros--;
+                                            System.out.println(" ");
+                                            System.out.println("Libro borrado correctamente.");
+                                        } else {
+                                            System.out.println(" ");
+                                            System.out.println("Número de libro no válido.");
+                                        }
+                                    } else {
+                                        System.out.println(" ");
+                                        System.out.println("No hay libros registrados.");
+                                    }
+                                    break;
+                                case 8:
+                                    // Información General
+                                    int opcionInformacionGeneral;
+                                    do {
+                                        System.out.println(" ");
+                                        System.out.println("\u001B[33m===========================\u001B[0m");
+                                        System.out.println("\u001B[33mInformación General\u001B[0m");
+                                        System.out.println("\u001B[33m===========================\u001B[0m");
+                                        System.out.println("1. Media de edad de los clientes");
+                                        System.out.println("2. Volver al menú administrador");
+                                        System.out.print("\u001B[33mIngrese su opción: \u001B[0m");
+                                        opcionInformacionGeneral = scanner.nextInt();
+
+                                        switch (opcionInformacionGeneral) {
+                                            case 1:
+                                                // Media de edad de los clientes
+                                                if (contadorClientes > 0) {
+                                                    int sumaEdad = 0;
+                                                    for (int i = 0; i < contadorClientes; i++) {
+                                                        sumaEdad += Integer.parseInt(clientes[i][2]);
+                                                    }
+                                                    double mediaEdad = (double) sumaEdad / contadorClientes;
+                                                    System.out.println(" ");
+                                                    System.out.println("\u001B[34mMedia de edad de los clientes: \u001B[0m" + mediaEdad);
+                                                } else {
+                                                    System.out.println(" ");
+                                                    System.out.println("No hay clientes registrados.");
+                                                }
+                                                break;
+                                            case 2:
+                                                break; // Volver al menú administrador
+                                            default:
+                                                System.out.println(" ");
+                                                System.out.println("Opción no válida. Inténtelo de nuevo.");
+                                        }
+                                    } while (opcionInformacionGeneral != 2);
+                                    break;
+                                case 9:
+                                    break; // Volver al menú principal
+                                default:
+                                    System.out.println(" ");
+                                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+                            }
+                        } while (opcionAdmin != 9);
+                    } else {
+                        System.out.println(" ");
+                        System.out.println("Contraseña incorrecta. Acceso denegado.");
+                    }
+                    break;
+
+
+
+
+
+
+
+
+
+case 1:
+                                System.out.println(" ");
+                                System.out.println("\u001B[34mCantidad de libros: \u001B[0m" + contadorLibros);
+                                break;
+                            case 2:
+                                // Ver información de un libro
+                                if (contadorLibros > 0) {
+                                    System.out.println(" ");
+                                    System.out.print("\u001B[33mIngrese el número del libro que desea ver: \u001B[0m");
+                                    int numeroLibro = scanner.nextInt();
+                                    if (numeroLibro >= 1 && numeroLibro <= contadorLibros) {
+                                        System.out.println(" ");
+                                        System.out.println("\u001B[34mInformación del Libro " + numeroLibro + "\u001B[0m:");
+                                        System.out.println("\u001B[34mTítulo: \u001B[0m" + libros[numeroLibro - 1][0]);
+                                        System.out.println("\u001B[34mNúmero de Páginas: \u001B[0m" + libros[numeroLibro - 1][1]);
+                                        System.out.println("\u001B[34mAutor: \u001B[0m" + libros[numeroLibro - 1][2]);
+                                    } else {
+                                        System.out.println(" ");
+                                        System.out.println("Número de libro no válido.");
+                                    }
+                                } else {
+                                    System.out.println(" ");
+                                    System.out.println("No hay libros registrados.");
+                                }
+                                break;
+
+
+
+
+
+
+
+
+al momento de agregar un libro, si pones mas de una palabra, te saca del programa
+
+se puede poner 2 veces el mismo nombre, apellido y edad y sale como clientes distintos
+
+
